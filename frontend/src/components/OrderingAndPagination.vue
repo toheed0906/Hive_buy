@@ -1,23 +1,19 @@
 <template>
-    <div class="d-flex">
-        <OrderDropDown />
-        <Pagination />
-    </div>
+  <div class="d-flex">
+    <OrderDropDown />
+    <Pagination />
+  </div>
 </template>
 
-
 <script setup>
-import OrderDropDown from '@/components/OrderDropDown.vue'
-import Pagination from '@/components/Pagination.vue'
-import { defineComponent } from 'vue';
+import OrderDropDown from "@/components/OrderDropDown.vue";
+import Pagination from "@/components/Pagination.vue";
+import { defineComponent } from "vue";
 
-defineComponent(
-    {
-        components: {
-            OrderDropDown,
-            Pagination,
-        }
-    }
-)
-
+defineComponent({
+  components: {
+    OrderDropDown,
+    Pagination,
+  },
+});
 </script>

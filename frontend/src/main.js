@@ -63,6 +63,7 @@ const store = createStore({
             commit('setTotalProducts', response.data.count);
           } catch (error) {
             console.error(error);
+            router.push({ name: "ErrorMessage" });
           }
         }
       },
