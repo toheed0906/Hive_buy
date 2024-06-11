@@ -8,10 +8,15 @@ The features of the project include
 3. Ordering based on the relevance, price high to low, price low to high, minimum order qunatity low to high , latest and supplier rating
 4. Pagination based on the page numebr and cursor
 
+## User Interface
+   ![Main - Product - Page](https://github.com/toheed0906/Hive_buy/assets/171033097/1050399b-b493-4b3f-b72b-74946537cbca)
+   ![2](https://github.com/toheed0906/Hive_buy/assets/171033097/e7be332a-7054-4c23-8b12-105dad2697b6)
+
 
 ## How to run the project
   ###  1. clone the project 
-  ###  2. install the dependencies using requirements.txt 
+  ###  2. install the dependencies using requirements.txt
+
          pip install -r requirements.txt
   ### 3. Setup the env file (backend)
          #Chnage the db_name , db_user and db_password according to yours
@@ -27,4 +32,6 @@ The features of the project include
          python3 manage.py runserver
   ### 7. Cd into frontend and run command 
          npm run serve
+
+  
 
