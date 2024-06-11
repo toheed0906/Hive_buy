@@ -4,7 +4,7 @@ export default [
         component: () => import('@/views/ProductView.vue') 
     },
     {
-        path: '/product/:id', name: 'products-detail',
+        path: '/product/:id/', name: 'products-detail',
         component: () => import('@/views/ProductDetailView.vue')
     },
     {

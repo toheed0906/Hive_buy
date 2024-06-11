@@ -14,13 +14,14 @@
 import { onMounted, ref } from "vue";
 import { useStore } from "vuex";
 import axios from "axios";
+import { HTTP } from "@/request.js";
 
 const store = useStore();
 const categories = ref([]);
 
 onMounted(async () => {
   try {
-    const response = await axios.get(process.env.VUE_APP_ROOT_API + "/categories/");
+    const response = await HTTP.get("/categories/");
     store.commit("setCategories", response.data);
     categories.value = response.data;
   } catch (error) {

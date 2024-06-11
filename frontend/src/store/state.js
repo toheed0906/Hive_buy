@@ -33,7 +33,7 @@ export default {
       { id: 2, name: "Latest", ordering_param: 'created_at' },
       { id: 3, name: "Price Low To High", ordering_param: 'price' },
       { id: 4, name: "Price High To Low", ordering_param: '-price' },
-      { id: 5, name: "MOQ Low To High", ordering_param: 'inimum_order_qunatity' },
+      { id: 5, name: "MOQ Low To High", ordering_param: 'minimum_order_qunatity' },
       { id: 5, name: "Ratings High To Low", ordering_param: '-supplier__rating' },
     ],
   }

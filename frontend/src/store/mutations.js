@@ -10,7 +10,7 @@ export default {
       state.filters.max_price = newValue;
     },
     setMinimumOrderQuantity(state, newValue) {
-      state.filters.minimimum_order_quantity = newValue;
+      state.filters.minimum_order_qunatity = newValue;
     },
     setAvailibityInUsa(state, newValue) {
       state.filters.stock_in_usa = newValue;

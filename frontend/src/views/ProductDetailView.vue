@@ -118,6 +118,7 @@
 import axios from "axios";
 import { ref, onMounted } from "vue";
 import { useRoute, useRouter } from "vue-router";
+import { HTTP } from "@/request.js";
 
 const product = ref([]);
 const imageOnDisplay = ref("");
@@ -151,9 +152,7 @@ const decrease = () => {
 };
 onMounted(async () => {
   try {
-    const response = await axios.get(
-      process.env.VUE_APP_ROOT_API + "/products/" + route.params.id
-    );
+    const response = await HTTP.get("/products/" + route.params.id);
     product.value = response.data;
     imageOnDisplay.value = product.value.product_image[0];
     qunatity_to_display.value = response.data.minimum_order_qunatity;

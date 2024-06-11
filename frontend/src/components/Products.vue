@@ -18,6 +18,11 @@
             />
           </div>
           <div class="card-body px-3">
+            <div class="d-flex" v-if="item.stock_in_usa == true">
+              <img src="../assets/usa.svg" alt="" height="50px" />
+              <p class="pt-4 px-2">Available in USA</p>
+            </div>
+            <div v-else style="height: 50px"></div>
             <p class="product-name">{{ item.product_name }}</p>
             <p class="qunatity">MOQ: {{ item.minimum_order_qunatity }} {{ item.unit }}</p>
             <div class="detail-box-price">$ {{ item.price }}.00 / {{ item.unit }}</div>
