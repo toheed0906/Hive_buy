@@ -7,7 +7,7 @@ from django_filters import rest_framework as filters
 from rest_framework.pagination import PageNumberPagination
 
 class ProductPagination(PageNumberPagination):
-    page_size = 3
+    page_size = 9
     ordering = "id"
   
 

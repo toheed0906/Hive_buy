@@ -24,7 +24,7 @@ import { computed } from "vue";
 import { useStore } from "vuex";
 const store = useStore();
 const page = computed(() => store.state.filters["page"]);
-const totalPages = computed(() => Math.ceil(store.state.totalProducts / 3));
+const totalPages = computed(() => Math.ceil(store.state.totalProducts / 9));
 
 const goToPerviousPage = () => {
   if (page.value > 1) {

@@ -5,11 +5,11 @@
       class="rounded-full bg-smoke-100 d-flex justify-content-center py-2 border border-dark-b"
     >
       <input
+        v-model="value"
         type="text"
         :placeholder="placeholder"
         class="app-input bg-smoke-100 text-center"
-        :value="value"
-        @change="$emit('input', $event.target.value)"
+        @update:model-value="$emit('update:modelValue', value)"
       />
       <i class="fa fa-search search-icon"></i>
     </div>
@@ -17,14 +17,18 @@
 </template>
 
 <script setup>
+import { ref } from "vue";
+
 const props = defineProps({
   title: String,
   placeholder: String,
-  value: {
+  modelValue: {
     type: [Number, String],
     default: null,
   },
 });
+
+const value = ref("");
 </script>
 
 <style scoped>

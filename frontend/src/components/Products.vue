@@ -22,7 +22,7 @@
             <p class="qunatity">MOQ: {{ item.minimum_order_qunatity }} {{ item.unit }}</p>
             <div class="detail-box-price">$ {{ item.price }}.00 / {{ item.unit }}</div>
             <div>
-              <button class="w-full bg-blue text-white py-1 d-block">Add To Chart</button>
+              <button class="w-full bg-blue text-white py-1 hidden">Add To Chart</button>
             </div>
           </div>
         </div>

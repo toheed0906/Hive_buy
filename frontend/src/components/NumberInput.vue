@@ -5,11 +5,11 @@
       class="rounded-full bg-smoke-100 d-flex justify-content-center py-2 border border-dark-b"
     >
       <input
+        v-model="value"
         type="number"
         :placeholder="placeholder"
         class="app-input bg-smoke-100 text-center"
-        :value="value"
-        @change="$emit('update:value', $event.target.value)"
+        @update:model-value="$emit('update:modelValue', value)"
       />
       <span> {{ unit }}</span>
     </div>
@@ -17,6 +17,7 @@
 </template>
 
 <script setup>
+import { ref } from "vue";
 const props = defineProps({
   title: String,
   placeholder: String,
@@ -27,6 +28,7 @@ const props = defineProps({
     default: null,
   },
 });
+const value = ref();
 </script>
 
 <style scoped>

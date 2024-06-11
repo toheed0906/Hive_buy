@@ -41,6 +41,7 @@ import CategoryModal from "@/components/CategoryModal.vue";
 
 const store = useStore();
 const nameOfProduct = ref("");
+const filters = ref(store.getters.getFilters);
 
 const showCategory = () => {
   const Modal = document.getElementById("categoriesModel");
@@ -49,10 +50,9 @@ const showCategory = () => {
 };
 
 const handleNameAndCategory = () => {
-  store.state.filters["category__sub_category_name"] = "";
-  store.state.filters["product_name__icontains"] = nameOfProduct.value;
-  store.state.filters["category__category__category_name"] =
-    store.state.selectedCategoryName;
+  filters.value["category__sub_category_name"] = "";
+  filters.value["product_name__icontains"] = nameOfProduct.value;
+  filters.value["category__category__category_name"] = store.state.selectedCategoryName;
   store.dispatch("fetchProducts");
 };
 

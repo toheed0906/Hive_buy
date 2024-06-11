@@ -17,11 +17,14 @@
 <script setup>
 import { defineComponent, onMounted } from "vue";
 import { useStore } from "vuex";
+// Components
 import Sidebar from "@/components/Sidebar.vue";
 import SearchAndCategory from "@/components/SearchAndCategory.vue";
 import Products from "@/components/Products.vue";
 import OrderingAndPagination from "@/components/OrderingAndPagination.vue";
+
 const store = useStore();
+
 onMounted(() => {
   store.dispatch("fetchProducts");
 });

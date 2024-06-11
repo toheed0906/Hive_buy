@@ -1,24 +1,8 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import ProductView from '../views/ProductView.vue'
-import ProductDetailView from '../views/ProductDetailView.vue'
-import ErrorMessage from '@/views/ErrorMessage.vue'
+import appRoutes from '@/router/routes.js'
 
 const routes = [
-  {
-    path: '/',
-    name: 'home',
-    component: ProductView
-  },
-  { path: '/product/:id', 
-    name: 'productsdetail',
-    component: ProductDetailView
-  },
-  {
-    path: '/error/',
-    name: 'ErrorMessage',
-    component: ErrorMessage
-  }
-
+  ...appRoutes,
 ]
 
 const router = createRouter({

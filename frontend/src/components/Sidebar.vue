@@ -3,12 +3,12 @@
     <div class="d-flex justify-content-between input-container">
       <div>
         <NumberInput
+          v-model="minPrice"
           title="Price"
-          :value="0"
           placeholder="From"
           unit="$"
           :full_width="false"
-          @input.capture="handleMinimumPrice"
+          @update:modelValue="handleMinimumPrice"
         />
       </div>
       <div class="pt-5 px-2">
@@ -16,30 +16,32 @@
       </div>
       <div class="pt-4">
         <NumberInput
+          v-model="maxPrice"
           title=""
-          :value="6900"
           placeholder="To"
           unit="$"
-          @input.capture="handleMaximumPrice"
+          @update:modelValue="handleMaximumPrice"
         />
       </div>
     </div>
 
     <div class="input-container">
       <NumberInput
+        v-model="minOrderQuantity"
         title="MOQ"
         placeholder="Less Than"
         :full_width="true"
-        @input.capture="handleMinimumOrderQauntity"
+        @update:modelValue="handleMinimumOrderQauntity"
       />
     </div>
 
     <div class="input-container location">
       <Searchbar
+        v-model="searchFilter"
         title="Manufacturer Location"
         placeholder="Country/Region"
         class="pb-4"
-        @input.capture="handleLocation"
+        @update:modelValue="handleLocation"
       />
 
       <div v-if="intialCountryLocationToShow != 0">
@@ -94,6 +96,11 @@ const showCompleteLocations = ref(true);
 const lengthOfCountry = ref(0);
 const selectedLocations = ref("");
 const inUSA = ref(store.getters.inUSA);
+const searchFilter = ref("");
+const minOrderQuantity = ref(0);
+const country_options = ref(store.getters.getCountryOptions);
+const maxPrice = ref(0);
+const minPrice = ref(0);
 
 defineComponent({
   components: {
@@ -103,20 +110,20 @@ defineComponent({
   },
 });
 onBeforeMount(() => {
-  countryOptions.value = [...store.state.country_options];
-  lengthOfCountry.value = store.state.country_options.length;
+  countryOptions.value = [...country_options.value];
+  lengthOfCountry.value = country_options.value.length;
 });
 
-const handleMinimumPrice = (event) => {
-  store.commit("setMinPrice", parseInt(event.target.value) || "");
+const handleMinimumPrice = () => {
+  store.commit("setMinPrice", parseInt(minPrice.value) || "");
   store.dispatch("fetchProducts");
 };
-const handleMaximumPrice = (event) => {
-  store.commit("setMaxPrice", parseInt(event.target.value) || "");
+const handleMaximumPrice = () => {
+  store.commit("setMaxPrice", parseInt(maxPrice.value) || "");
   store.dispatch("fetchProducts");
 };
-const handleMinimumOrderQauntity = (event) => {
-  store.commit("setMinimumOrderQuantity", parseInt(event.target.value) || "");
+const handleMinimumOrderQauntity = () => {
+  store.commit("setMinimumOrderQuantity", parseInt(minOrderQuantity.value) || "");
   store.dispatch("fetchProducts");
 };
 const handleAvailabiltyInUsa = () => {
@@ -136,14 +143,16 @@ const showLessLocations = () => {
   showCompleteLocations.value = true;
 };
 
-const handleLocation = (event) => {
-  let val = event.target.value.toLowerCase();
-  countryOptions.value = store.state.country_options.filter((cn) =>
+const handleLocation = () => {
+  console.log(searchFilter.value);
+  let val = searchFilter.value.toLowerCase();
+  countryOptions.value = country_options.value.filter((cn) =>
     cn.name.toLowerCase().includes(val)
   );
   intialCountryLocationToShow.value = countryOptions.value.length;
 };
-const handleManufacturer = (event) => {
+
+const handleManufacturer = () => {
   selectedLocations.value = "";
   for (let i = 0; i < countryOptions.value.length; i++) {
     if (countryOptions.value[i].selected == true) {

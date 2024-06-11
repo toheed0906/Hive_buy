@@ -49,7 +49,7 @@
       </div>
 
       <div class="py-1 text-center d-flex justify-content-around full-rounded-border">
-        <button class="less-opacity no-border white-bg" @click="decrease" id="addBtn">
+        <button class="less-opacity no-border white-bg" @click="decrease" id="decBtn">
           <i class="fa">&#xf068;</i>
         </button>
         <div>
@@ -130,15 +130,36 @@ const handleDisplayImage = (url) => {
   imageOnDisplay.value = url;
 };
 
+const increase = () => {
+  const btn = document.getElementById("decBtn");
+  qunatity_to_display.value = qunatity_to_display.value + 1;
+  btn.classList.remove("less-opacity");
+  console.log(btn.classList);
+};
+
+const decrease = () => {
+  const btn = document.getElementById("decBtn");
+  console.log(btn.classList);
+  if (qunatity_to_display.value > product.value.minimum_order_qunatity) {
+    qunatity_to_display.value = qunatity_to_display.value - 1;
+  }
+  if (qunatity_to_display.value == product.value.minimum_order_qunatity) {
+    btn.classList.add("less-opacity");
+  } else {
+    btn.classList.remove("less-opacity");
+  }
+};
 onMounted(async () => {
   try {
-    const response = await axios.get(process.env.VUE_APP_ROOT_API + route.params.id);
+    const response = await axios.get(
+      process.env.VUE_APP_ROOT_API + "/products/" + route.params.id
+    );
     product.value = response.data;
     imageOnDisplay.value = product.value.product_image[0];
     qunatity_to_display.value = response.data.minimum_order_qunatity;
   } catch (error) {
     console.log(error.message);
-    router.push({ name: "ErrorMessage" });
+    router.push({ name: "error-message" });
   }
 });
 </script>
@@ -147,9 +168,11 @@ onMounted(async () => {
 i {
   font-size: 14px;
 }
+
 .color-b {
   color: black;
 }
+
 .white-bg {
   background-color: white;
 }
@@ -163,7 +186,7 @@ span {
   border-width: 1px;
   border-style: solid;
   border-color: gray;
-  width: 40%;
+  width: 150px;
 }
 
 .no-border {

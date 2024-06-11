@@ -18,7 +18,6 @@ router.register(r'suppliercertification', SupplierCertificationViewSet)
 router.register(r'products', ProductViewSet)
 
 urlpatterns = [ 
-    path('admin/',admin.site.urls),
     path('', include(router.urls)), 
     path('api-auth/', include('rest_framework.urls')) 
 ] 
