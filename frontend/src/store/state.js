@@ -9,7 +9,7 @@ export default {
       min_price: '',
       max_price: '',
       stock_in_usa: '',
-      minimimum_order_quantity: '',
+      minimum_order_quantity: '',
       category__category__category_name: '',
       category__sub_category_name: '',
       product_name__icontains: '',

@@ -14,7 +14,7 @@
               v-model="nameOfProduct"
               @input="handleNameOfProduct"
             />
-            <span> | </span>
+            |
             <CategoryDropDown />
           </div>
         </div>

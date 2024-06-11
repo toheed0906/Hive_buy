@@ -15,7 +15,7 @@ class ProductPagination(PageNumberPagination):
 class ProductFilter(filters.FilterSet):
     min_price = filters.NumberFilter( field_name = "price", lookup_expr = 'gte', label = "Minimum Price")
     max_price = filters.NumberFilter( field_name = "price", lookup_expr = 'lte', label = "Maximum Price" )
-    minimimum_order_quantity = filters.NumberFilter(field_name = "minimum_order_qunatity", lookup_expr = 'lt')
+    minimum_order_quantity = filters.NumberFilter(field_name = "minimum_order_qunatity", lookup_expr = 'lt')
    
     class Meta:
         model = Product
